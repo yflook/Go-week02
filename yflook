@@ -1,0 +1,10 @@
+var name string
+err = db.QueryRow("select name from users where id = ?", 1).Scan(&name)
+if err != nil {
+    if err == sql.ErrNoRows {
+        //没有行，但也没有错误发生
+    } else {
+        log.Fatal(err)
+    }
+}
+fmt.Println(name)
